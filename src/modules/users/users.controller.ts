@@ -3,12 +3,11 @@ import {
   Controller,
   Get,
   HttpCode,
-  HttpStatus,
   Post,
   Query,
 } from '@nestjs/common';
 import { CreateUserDTO, GetAllQueryDTO } from './dto/users.dto';
-import { UsersService } from './user.service';
+import { UsersService } from './users.service';
 import { User } from './interfaces/users.types';
 
 @Controller('users')

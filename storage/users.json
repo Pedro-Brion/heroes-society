@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "name": "Pedro",
+      "age": 26,
+      "isAdmin": false,
+      "id": 56982
+    },
+    {
+      "name": "Pedro 2",
+      "age": 27,
+      "isAdmin": false,
+      "id": 10822
+    },
+    {
+      "name": "Thaís",
+      "age": 27,
+      "isAdmin": false,
+      "id": 63327
+    }
+  ]
+}

@@ -1,16 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { User } from './interfaces/users.types';
+import { DataService } from 'src/data/data.service';
+import { DataConsumerService } from 'src/data/dataConsumer.interface';
 
 @Injectable()
-export class UsersService {
-  private readonly users: User[] = [
-    {
-      id: 10001,
-      name: 'Pedro',
-      age: 26,
-      isAdmin: true,
-    },
-  ];
+export class UsersService extends DataConsumerService {
+  private users: User[] = [];
+  readonly fileName = 'users';
+
+  constructor(private dataService: DataService) {
+    super();
+    this.retrieveData();
+  }
+
+  async retrieveData() {
+    this.users = await this.dataService.read(this.fileName);
+    console.log(this.users);
+  }
 
   getAll(search?: string): { data: User[]; count: number } {
     if (search) {
@@ -27,5 +33,6 @@ export class UsersService {
 
   create(user: User) {
     this.users.push(user);
+    this.dataService.write(this.fileName, this.users);
   }
 }
