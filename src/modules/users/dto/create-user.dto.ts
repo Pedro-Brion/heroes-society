@@ -1,14 +1,10 @@
 import {
   IsNotEmpty,
-  IsNumber,
   Validate,
   ValidatorConstraint,
   ValidatorConstraintInterface,
 } from 'class-validator';
 
-export interface GetAllQueryDTO {
-  search: string;
-}
 
 @ValidatorConstraint({ name: 'isNumberOrStringNumber' })
 export class IsNumberOrStringNumber implements ValidatorConstraintInterface {

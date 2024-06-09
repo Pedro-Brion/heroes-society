@@ -3,7 +3,7 @@
     {
       "name": "Pedro",
       "age": 26,
-      "isAdmin": false,
+      "isAdmin": true,
       "id": 56982
     },
     {
@@ -17,6 +17,18 @@
       "age": 27,
       "isAdmin": false,
       "id": 63327
+    },
+    {
+      "name": "Pablo",
+      "age": 18,
+      "isAdmin": false,
+      "id": 87812
+    },
+    {
+      "name": "Pablo",
+      "age": 18,
+      "isAdmin": false,
+      "id": 4604
     }
   ]
 }
