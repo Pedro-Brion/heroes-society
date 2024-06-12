@@ -1,31 +1,21 @@
 import {
-  Body,
   Controller,
   Delete,
-  ForbiddenException,
   Get,
   NotFoundException,
   Param,
-  ParseIntPipe,
-  Patch,
-  Post,
   Query,
+  Req,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from './models/user.entity';
 //DTOS
-import { ToggleUserAdminDTO } from './dto/admin-user.dto';
-import { CreateUserDTO } from './dto/create-user.dto';
 import { GetAllQueryDTO } from './dto/list-users.dto';
 import { EntityNotFound } from 'src/config/expection.config';
-import { ConfigService } from '@nestjs/config';
 
 @Controller('users')
 export class UserController {
-  constructor(
-    private usersService: UsersService,
-    private configService: ConfigService,
-  ) {}
+  constructor(private usersService: UsersService) {}
 
   //GET -> /users
   @Get()
@@ -33,9 +23,23 @@ export class UserController {
     return this.usersService.listAll(query.search);
   }
 
+  //GET -> users/new
+  @Get('new')
+  newUser() {
+    const user = this.usersService.newUser();
+    return user;
+  }
+
+  //GET -> users/me
+  @Get('me')
+  me() {
+    const user = this.usersService.userById('');
+    return user;
+  }
+
   //GET -> /users/{id}
   @Get(':id')
-  userById(@Param('id', ParseIntPipe) id: number) {
+  userById(@Param('id') id: string) {
     try {
       return this.usersService.userById(id);
     } catch (err) {
@@ -45,36 +49,11 @@ export class UserController {
     }
   }
 
-  //POST /users/create
-  @Post('create')
-  create(@Body() body: CreateUserDTO) {
-    const user: User = body as User;
-    user.isAdmin = false;
-    this.usersService.create(user);
-    return { data: user };
-  }
-
   //DELETE /users/remove/{id}
   @Delete('remove/:id')
-  removeUser(@Param('id', ParseIntPipe) id: number) {
+  removeUser(@Param('id') id: string) {
     try {
       return this.usersService.deleteUser(id);
-    } catch (err) {
-      throw new NotFoundException(err);
-    }
-  }
-
-  //PATCH -> /users/toggle-admin/{id}
-  @Patch('toggle-admin/:id')
-  toggleAdmin(
-    @Body() body: ToggleUserAdminDTO,
-    @Param('id', ParseIntPipe) id: number,
-  ): object {
-    const secret = this.configService.get<string>('DB_PASSWORD');
-    if (body.secret !== secret)
-      throw new ForbiddenException('Secret not match');
-    try {
-      return this.usersService.toggleAdmin(id);
     } catch (err) {
       throw new NotFoundException(err);
     }

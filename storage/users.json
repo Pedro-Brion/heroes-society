@@ -1,34 +1,12 @@
 {
   "data": [
     {
-      "name": "Pedro",
-      "age": 26,
-      "isAdmin": true,
-      "id": 56982
+      "name": "USER01",
+      "id": "c5be70ef-b406-4c3a-a5a2-25e39e9d9980"
     },
     {
-      "name": "Pedro 2",
-      "age": 27,
-      "isAdmin": false,
-      "id": 10822
-    },
-    {
-      "name": "Thaís",
-      "age": 27,
-      "isAdmin": false,
-      "id": 63327
-    },
-    {
-      "name": "Pablo",
-      "age": 18,
-      "isAdmin": false,
-      "id": 87812
-    },
-    {
-      "name": "Pablo",
-      "age": 18,
-      "isAdmin": false,
-      "id": 4604
+      "id": "598f7ab7-fdbe-498f-8b1f-68c5c394f2c2",
+      "name": "USER02"
     }
   ]
 }

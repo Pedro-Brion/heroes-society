@@ -15,10 +15,4 @@ export class IsNumberOrStringNumber implements ValidatorConstraintInterface {
 }
 
 export class CreateUserDTO {
-  @IsNotEmpty()
-  name: string;
-
-  @IsNotEmpty()
-  @Validate(IsNumberOrStringNumber, { message: 'age must be a number' })
-  age: number;
 }

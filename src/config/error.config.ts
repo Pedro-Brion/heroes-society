@@ -8,6 +8,7 @@ import {
 export class ErrorConfig {
   static exeptionFactory = (errors: ValidationError[]): HttpException => {
     const messages = {};
+    console.log(errors)
     errors.forEach(
       (error) => (messages[error.property] = Object.values(error.constraints)),
     );

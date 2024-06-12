@@ -2,15 +2,11 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @Column({ type: 'text' })
   name: string;
-
-  @Column({ type: 'integer' })
-  age: number;
-
-  @Column({ type: 'integer' })
-  isAdmin: boolean;
 }
+
+export const UserRepository = 'USER_REPOSITORY';
