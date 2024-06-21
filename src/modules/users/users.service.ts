@@ -24,8 +24,10 @@ export class UsersService {
    * @param id User id to be found
    * @returns {User}
    */
-  userById(id: string) {
-    //TODO
+  async userById(id: string): Promise<User> {
+    const user = await this.usersRepo.findOne({ where: { id } });
+    if (!user) throw new EntityNotFound('User');
+    else return user;
   }
 
   /**

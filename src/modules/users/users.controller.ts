@@ -18,10 +18,10 @@ export class UserController {
   constructor(private usersService: UsersService) {}
 
   //GET -> /users
-  @Get()
-  all(@Query() query: GetAllQueryDTO): object {
-    return this.usersService.listAll(query.search);
-  }
+  // @Get()
+  // all(@Query() query: GetAllQueryDTO): object {
+  //   return this.usersService.listAll(query.search);
+  // }
 
   //GET -> users/new
   @Get('new')
@@ -31,21 +31,23 @@ export class UserController {
   }
 
   //GET -> users/me
-  @Get('me')
-  me() {
-    const user = this.usersService.userById('');
-    return user;
-  }
+  // @Get('me')
+  // me() {
+  //   const user = this.usersService.userById('');
+  //   return user;
+  // }
 
   //GET -> /users/{id}
   @Get(':id')
-  userById(@Param('id') id: string) {
+  async userById(@Param('id') id: string) {
     try {
-      return this.usersService.userById(id);
+      const user = await this.usersService.userById(id);
+      return user;
     } catch (err) {
-      if (err instanceof EntityNotFound)
+      if (err instanceof EntityNotFound) {
         throw new NotFoundException(err.message);
-      else throw err;
+      }
+      throw err;
     }
   }
 
