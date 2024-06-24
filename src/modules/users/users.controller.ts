@@ -11,7 +11,7 @@ import { UsersService } from './users.service';
 import { User } from './models/user.entity';
 //DTOS
 import { GetAllQueryDTO } from './dto/list-users.dto';
-import { EntityNotFound } from 'src/config/expection.config';
+import { EntityNotFound } from 'src/config/exception.config';
 
 @Controller('users')
 export class UserController {
@@ -29,13 +29,6 @@ export class UserController {
     const user = this.usersService.newUser();
     return user;
   }
-
-  //GET -> users/me
-  // @Get('me')
-  // me() {
-  //   const user = this.usersService.userById('');
-  //   return user;
-  // }
 
   //GET -> /users/{id}
   @Get(':id')

@@ -124,7 +124,11 @@ const heroNames = [
   'Welder',
 ];
 
-function fakeName() {
+/**
+ * Função para criar um nome de herói falso
+ * @returns {string} Retorna um nome de herói com indexador aleatório
+ */
+function fakeName(): string {
   const randomName = heroNames[Math.floor(Math.random() * heroNames.length)];
   const randomString = Math.random().toString(36).substring(2, 7);
   return `${randomName.toUpperCase()}${randomString}`
