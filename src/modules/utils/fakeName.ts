@@ -131,7 +131,7 @@ const heroNames = [
 function fakeName(): string {
   const randomName = heroNames[Math.floor(Math.random() * heroNames.length)];
   const randomString = Math.random().toString(36).substring(2, 7);
-  return `${randomName.toUpperCase()}${randomString}`
+  return `${randomName}${randomString}`
     .replace(' ', '')
     .replace('-', '')
     .trim();

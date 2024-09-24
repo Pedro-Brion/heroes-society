@@ -6,7 +6,6 @@ import {
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
-import { Observable } from 'rxjs';
 import { JWTConstants } from './constants';
 import { Reflector } from '@nestjs/core';
 import { Auth, Role } from './auth.decorator';
@@ -36,6 +35,7 @@ export class AuthGuard implements CanActivate {
       });
 
       request['user'] = user;
+      console.log('GUARD', user);
       return this.authorize(roles, user as User);
     } catch {
       throw new UnauthorizedException();

@@ -14,9 +14,8 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   //GET -> auth/me
-  @UseGuards(AuthGuard)
   @Get('me')
-  async me(@Request() req) {
+  async me(@Request() req: Request) {
     const id = req['user']?.id;
     return this.authService.me(id);
   }
