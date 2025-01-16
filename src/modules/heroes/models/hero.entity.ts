@@ -11,13 +11,13 @@ export class Hero {
   @Column({ type: 'text' })
   hero_name: string;
 
-  @Column({ type: 'integer' })
+  @Column({ type: 'integer', nullable: true })
   age: number;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', nullable: true })
   ocupation: string;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', nullable: true })
   description: string;
 }
 

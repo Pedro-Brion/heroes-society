@@ -10,4 +10,10 @@ export class HeroesService {
   async listAll(): Promise<Hero[]> {
     return this.heroesRepo.find();
   }
+
+  async create(payload: Partial<Hero>): Promise<Hero> {
+    const hero = this.heroesRepo.create(payload);
+
+    return this.heroesRepo.save(hero);
+  }
 }
